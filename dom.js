@@ -13,22 +13,22 @@ document.title = "Hotel Items";
 // console.log(document.body);
 // console.log(document.all);
 
-document.all[18].textContent = "Hello, here is your menu list";
+//document.all[18].textContent = "Hello, here is your menu list";
 
 // console.log(document.forms);
 // console.log(document.links);
 
 
 //GETELEMENTBYID
-var header = document.getElementById('main-header');
-header.style.borderBottom = 'solid 3px #000';
+// var header = document.getElementById('main-header');
+// header.style.borderBottom = 'solid 3px #000';
 
 
-//GETELEMENTBYCLASSNAME
-var title = document.getElementsByClassName('title');
-console.log(title);
-title[0].style.color = 'green';
-title[0].style.fontWeight = 'bold';
+// //GETELEMENTBYCLASSNAME
+// var title = document.getElementsByClassName('title');
+// console.log(title);
+// title[0].style.color = 'green';
+// title[0].style.fontWeight = 'bold';
 
 // var items = document.getElementsByClassName('list-group-item');
 // items[2].style.backgroundColor = 'green';
@@ -41,21 +41,51 @@ title[0].style.fontWeight = 'bold';
 // }
 
 
-var items = document.getElementsByClassName('list-group-item');
-for (let i=0; i < items.length; i++){
-    items[i].style.color = 'skyblue';
-}
+// var items = document.getElementsByClassName('list-group-item');
+// for (let i=0; i < items.length; i++){
+//     items[i].style.color = 'skyblue';
+// }
 
-//GETELEMENTBYTAGNAME
-var li = document.getElementsByTagName('li');
-console.log('li');
+// //GETELEMENTBYTAGNAME
+// var li = document.getElementsByTagName('li');
+// console.log('li');
 
-for (let i=0; i < li.length; i++){
-    li[i].style.color = 'skyblue';
-}
+// for (let i=0; i < li.length; i++){
+//     li[i].style.color = 'skyblue';
+// }
 
-var items = document.getElementsByClassName('list-group-item');
-for (let i=0; i < items.length; i++){
-    items[i].style.fontWeight = 'bold';
-    items[i].style.backgroundColor = 'green';
-}
+// var items = document.getElementsByClassName('list-group-item');
+// for (let i=0; i < items.length; i++){
+//     items[i].style.fontWeight = 'bold';
+//     items[i].style.backgroundColor = 'green';
+// }
+
+
+//QUERYSELECTOR
+var header = document.querySelector('#main-header');
+header.style.borderBottom = 'solid 4px #000';
+
+var input = document.querySelector('input');
+input.value = 'Hello World!';
+// Even though it has two inputs, it will select the first one by default
+
+var submit = document.querySelector('input[type = "submit"]');
+submit.value = 'SEND';
+
+var items = document.querySelector('.list-group-item');
+items.style.color = 'red';
+
+var secondItem = document.querySelector('.list-group-item:nth-child(2)');
+secondItem.style.backgroundColor = 'green';
+
+var lastItem = document.querySelector('.list-group-item:last-child');
+console.log(lastItem)
+lastItem.style.backgroundColor = 'red';
+
+var thirdItem = document.querySelector('.list-group-item:nth-child(3)');
+thirdItem.style.visibity = 'hidden';
+
+//QUERYSELECTORALL
+
+
+
