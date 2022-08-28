@@ -62,30 +62,41 @@ document.title = "Hotel Items";
 
 
 //QUERYSELECTOR
-var header = document.querySelector('#main-header');
-header.style.borderBottom = 'solid 4px #000';
+// var header = document.querySelector('#main-header');
+// header.style.borderBottom = 'solid 4px #000';
 
-var input = document.querySelector('input');
-input.value = 'Hello World!';
-// Even though it has two inputs, it will select the first one by default
+// var input = document.querySelector('input');
+// input.value = 'Hello World!';
+// // Even though it has two inputs, it will select the first one by default
 
-var submit = document.querySelector('input[type = "submit"]');
-submit.value = 'SEND';
+// var submit = document.querySelector('input[type = "submit"]');
+// submit.value = 'SEND';
 
-var items = document.querySelector('.list-group-item');
-items.style.color = 'red';
+// var items = document.querySelector('.list-group-item');
+// items.style.color = 'red';
 
-var secondItem = document.querySelector('.list-group-item:nth-child(2)');
-secondItem.style.backgroundColor = 'green';
+// var secondItem = document.querySelector('.list-group-item:nth-child(2)');
+// secondItem.style.backgroundColor = 'green';
 
-var lastItem = document.querySelector('.list-group-item:last-child');
-console.log(lastItem)
-lastItem.style.backgroundColor = 'red';
+// var lastItem = document.querySelector('.list-group-item:last-child');
+// console.log(lastItem)
+// lastItem.style.backgroundColor = 'red';
 
-var thirdItem = document.querySelector('.list-group-item:nth-child(3)');
-thirdItem.style.visibity = 'hidden';
+// var thirdItem = document.querySelector('.list-group-item:nth-child(3)');
+// thirdItem.style.visibity = 'hidden';
 
 //QUERYSELECTORALL
+var odd = document.querySelectorAll('li:nth-child(odd)');
+console.log(odd);
+for (var i = 0; i < odd.length; i++){
+    odd[i].style.backgroundColor = 'green';
+}
+
+var second = document.querySelectorAll('li');
+console.log(second);
+if(i==1){
+    second[i].style.color = 'red';
+}
 
 
 
