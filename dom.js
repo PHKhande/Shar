@@ -86,17 +86,88 @@ document.title = "Hotel Items";
 // thirdItem.style.visibity = 'hidden';
 
 //QUERYSELECTORALL
-var odd = document.querySelectorAll('li:nth-child(odd)');
-console.log(odd);
-for (var i = 0; i < odd.length; i++){
-    odd[i].style.backgroundColor = 'green';
-}
+// var odd = document.querySelectorAll('li:nth-child(odd)');
+// //console.log(odd);
+// for (var i = 0; i < odd.length; i++){
+//     odd[i].style.backgroundColor = 'green';
+// }
 
-var second = document.querySelectorAll('li');
-console.log(second);
-if(i==1){
-    second[i].style.color = 'red';
-}
+// var second = document.querySelectorAll('li');
+// console.log(second);
+// second[2].style.color = 'red';
 
 
+// TRAVERSING THE DOM //
 
+var itemList = document.querySelector('#items');
+
+// //ParentNode 
+// console.log(itemList.parentNode);
+// itemList.parentNode.style.backgroundColor = 'grey';
+
+//ParentElement
+//console.log(itemList.parentElement);
+itemList.parentElement.style.backgroundColor = 'grey';
+
+//childNodes
+//console.log(itemList.childNodes);
+
+//children
+//console.log(itemList.children);
+itemList.children[0].style.backgroundColor = 'brown';
+
+
+//lastChild
+//console.log(itemList.lastChild);
+
+//lastElementChild
+//console.log(itemList.lastElementChild);
+itemList.lastElementChild.textContent = 'Paneer';
+itemList.firstElementChild.textContent = 'Rice';
+
+// //nextSibling
+// console.log(itemList.nextSibling);
+// console.log(itemList.nextElementSibling);
+
+// console.log(itemList.previousSibling);
+// console.log(itemList.previousElementSibling);
+itemList.previousElementSibling.style.color = 'green';
+
+//createElement
+
+// Create a div
+var newDiv = document.createElement('div');
+
+
+// Add class and id
+newDiv.className = 'hello';
+newDiv.id = 'hello1';
+
+// Add attr
+newDiv.setAttribute('title', 'Hello Div');
+
+
+//Create a text node
+var newDivtext = document.createTextNode('Hello World!');
+
+//Add text node in div
+newDiv.appendChild(newDivtext);
+
+// Adding div inside DOM
+var container = document.querySelector('header .container');
+var h1 = document.querySelector('header h1');
+//console.log(h1);
+
+container.insertBefore(newDiv, h1);
+newDiv.style.fontSize = '20px';
+
+// Adding hello before item1
+var head1 = document.querySelector('div .list-group');
+console.log(head1);
+var list1 = document.querySelector('ul .list-group-item');
+console.log(list1);
+
+head1.insertBefore(newDiv, list1);
+
+
+console.log(newDiv);
