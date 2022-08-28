@@ -1,3 +1,5 @@
+//git remote add origin https://github.com/PHKhande/SharpenerTasks.git
+
 //console.dir(document);
 
 // console.log(document.domain);
@@ -11,7 +13,7 @@ document.title = "Hotel Items";
 // console.log(document.body);
 // console.log(document.all);
 
-document.all[18].textContent = "Hello, Menu List";
+document.all[18].textContent = "Hello, here is your menu list";
 
 // console.log(document.forms);
 // console.log(document.links);
@@ -21,7 +23,15 @@ document.all[18].textContent = "Hello, Menu List";
 var header = document.getElementById('main-header');
 header.style.borderBottom = 'solid 3px #000';
 
-var items = document.getElementsByClassName('title');
-console.log(items);
-items[0].style.color = 'green';
-items[0].style.fontWeight = 'bold';
+var title = document.getElementsByClassName('title');
+console.log(title);
+title[0].style.color = 'green';
+title[0].style.fontWeight = 'bold';
+
+var items = document.getElementsByClassName('list-group-item');
+items[2].style.backgroundColor = 'green';
+for (let i=0; i < items.length; i++){
+    items[i].style.fontWeight = 'bold';
+}
+items[2].style.backgroundColor = 'green';
+
