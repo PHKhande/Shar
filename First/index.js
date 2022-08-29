@@ -50,9 +50,15 @@ function onSubmit(e) {
     setTimeout(() => msg.remove(), 3000);
   } else {
 
-    //storing locally
-    localStorage.setItem('Name', nameInput.value);
-    localStorage.setItem('Email', emailInput.value);
+    //storing locally as an object
+    let userDetails = {
+      Name : nameInput.value,
+      Email : emailInput.value
+    };
+
+    let userDetails_serialized = JSON.stringify(userDetails);
+    localStorage.setItem('userDetails', userDetails_serialized);
+
 
     console.log(`Name is ${nameInput.value} and email is ${emailInput.value}`);
     
@@ -85,3 +91,13 @@ function onSubmit(e) {
 
 //document.cookie = 'name=Kyle; expires=' + new Date(2022, 0, 1).toUTCString();
 
+
+
+let userDetails_deserialized = JSON.parse(localStorage.getItem('userDetails'));
+console.log(userDetails_deserialized);
+
+let localName = userDetails_deserialized.Name;
+let localEmail = userDetails_deserialized.Email;
+const li = document.createElement('li');
+li.appendChild(document.createTextNode(`${localName}: ${localEmail}`));
+userList.appendChild(li);
