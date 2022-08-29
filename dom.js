@@ -46,7 +46,6 @@ function addItem(e){
     // editBtn.appendChild(document.createTextNode('Edit'));
     // li.appendChild(editBtn);
 
-
     itemList.appendChild(li);
 }
 
