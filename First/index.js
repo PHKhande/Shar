@@ -49,10 +49,27 @@ function onSubmit(e) {
 
 function newUser(localName, localEmail){
   const li = document.createElement('li');
+  const bt1 = document.createElement("button");
+  bt1.setAttribute('id', `ed+${localEmail}`);
+  bt1.innerHTML = 'EDIT';
+  const bt2 = document.createElement("button");
+  bt2.innerHTML = 'DEL';
+  bt2.setAttribute('id', `de+${localEmail}`);
   li.setAttribute('id', localEmail)
+
   li.appendChild(document.createTextNode(`${localName}: ${localEmail}`));
+  li.appendChild(bt1);
+  li.appendChild(bt2);
+
+  bt1.addEventListener('click', editUser);
+  bt2.addEventListener('click', delUser);
   userList.appendChild(li);
 }
+
+//userList.addEventListener('click', editUser());
+//userList.addEventListener('click', delUser());
+
+
 
 function removeUser(localEmail){
   let rem = document.getElementById(localEmail)
@@ -68,3 +85,11 @@ function removeUser(localEmail){
   }
 
   showUserOnScreen();
+
+function editUser(){
+
+}
+
+function delUser(){
+
+}
