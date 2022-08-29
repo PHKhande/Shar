@@ -62,16 +62,6 @@ function onSubmit(e) {
 }
 
 
-//local storge
-// localStorage.setItem('name','Bob');
-// console.log(localStorage.getItem('name'));
-// localStorage.removeItem('name');
-
-// sessionStorage.setItem('name','Bob');
-// sessionStorage.removeItem('name');
-
-//document.cookie = 'name=Kyle; expires=' + new Date(2022, 0, 1).toUTCString();
-
 
 Object.keys(localStorage).forEach((key) => {
   stringifiedDetailsOfPeople = localStorage.getItem(key);
