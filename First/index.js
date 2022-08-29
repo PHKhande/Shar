@@ -1,33 +1,13 @@
-// const ul = document.querySelector('.items');
-
-// //ul.remove();
-// //ul.lastElementChild.remove();
-// ul.firstElementChild.textContent = 'Hello';
-// ul.firstElementChild.style.color = 'green';
-// ul.children[0].style.background = 'grey';
-
-// ul.children[1].innerText = 'Brad';
-// ul.children[1].style.color = 'yellow';
-// ul.children[1].style.background = 'grey';
-
-// ul.lastElementChild.innerHTML = '<h1>Hello</h1>';
-
-// const btn = document.querySelector('.btn');
-// btn.style.background = 'red';
 
 const btn = document.querySelector('.btn');
 
 btn.addEventListener('mouseover', (e) => {
     document.querySelector('body').classList.add('bg-dark');
-    // document.querySelector('.items').children[0].innerText = 'MouseOver';
-    // document.querySelector('.items').children[1].innerText = 'MouseOver';
-    // document.querySelector('.items').children[2].innerText = 'MouseOver';
 });
 
 btn.addEventListener('mouseout', (e) => {
     btn.style.background = 'red';
 });
-
 
 const myForm = document.querySelector('#my-form');
 const nameInput = document.querySelector('#name');
@@ -51,13 +31,14 @@ function onSubmit(e) {
   } else {
 
     //storing locally as an object
-    let userDetails = {
+    
+    const userDetails = {
       Name : nameInput.value,
       Email : emailInput.value
     };
 
-    let userDetails_serialized = JSON.stringify(userDetails);
-    localStorage.setItem('userDetails', userDetails_serialized);
+    let serialize = JSON.stringify(userDetails);
+    localStorage.setItem(userDetails.Email, serialize);
 
 
     console.log(`Name is ${nameInput.value} and email is ${emailInput.value}`);
@@ -67,13 +48,13 @@ function onSubmit(e) {
 
     // Add text node with input values
     li.appendChild(document.createTextNode(`${nameInput.value}: ${emailInput.value}`));
-
+    
     // Add HTML
     // li.innerHTML = `<strong>${nameInput.value}</strong>e: ${emailInput.value}`;
-
+    
     // Append to ul
     userList.appendChild(li);
-
+    
     // Clear fields
     nameInput.value = '';
     emailInput.value = '';
@@ -92,12 +73,14 @@ function onSubmit(e) {
 //document.cookie = 'name=Kyle; expires=' + new Date(2022, 0, 1).toUTCString();
 
 
+Object.keys(localStorage).forEach((key) => {
+  stringifiedDetailsOfPeople = localStorage.getItem(key);
+  deserialized = JSON.parse(stringifiedDetailsOfPeople);
 
-let userDetails_deserialized = JSON.parse(localStorage.getItem('userDetails'));
-console.log(userDetails_deserialized);
+  let localName = deserialized.Name;
+  let localEmail = deserialized.Email;
+  const li = document.createElement('li');
+  li.appendChild(document.createTextNode(`${localName}: ${localEmail}`));
+  userList.appendChild(li);
+  });
 
-let localName = userDetails_deserialized.Name;
-let localEmail = userDetails_deserialized.Email;
-const li = document.createElement('li');
-li.appendChild(document.createTextNode(`${localName}: ${localEmail}`));
-userList.appendChild(li);
