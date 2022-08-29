@@ -50,7 +50,6 @@ function addItem(e){
     itemList.appendChild(li);
 }
 
-
 function removeItem(e) {
     if (e.target.classList.contains('delete')){
         if(confirm('Are you sure?')){
