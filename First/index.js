@@ -31,46 +31,40 @@ function onSubmit(e) {
   } else {
 
     //storing locally as an object
-    
     const userDetails = {
       Name : nameInput.value,
       Email : emailInput.value
     };
-
     let serialize = JSON.stringify(userDetails);
     localStorage.setItem(userDetails.Email, serialize);
 
-
-    console.log(`Name is ${nameInput.value} and email is ${emailInput.value}`);
-    
-    // Create new list item with user
-    const li = document.createElement('li');
-
-    // Add text node with input values
-    li.appendChild(document.createTextNode(`${nameInput.value}: ${emailInput.value}`));
-    
-    // Add HTML
-    // li.innerHTML = `<strong>${nameInput.value}</strong>e: ${emailInput.value}`;
-    
-    // Append to ul
-    userList.appendChild(li);
-    
-    // Clear fields
-    nameInput.value = '';
-    emailInput.value = '';
+    if(localStorage.getItem(emailInput.value) !== null){
+      removeUser(emailInput.value);
+    }
+    newUser(nameInput.value, emailInput.value);
   }
+  nameInput.value = '';
+  emailInput.value = '';
 }
 
-
-
-Object.keys(localStorage).forEach((key) => {
-  stringifiedDetailsOfPeople = localStorage.getItem(key);
-  deserialized = JSON.parse(stringifiedDetailsOfPeople);
-
-  let localName = deserialized.Name;
-  let localEmail = deserialized.Email;
+function newUser(localName, localEmail){
   const li = document.createElement('li');
+  li.setAttribute('id', localEmail)
   li.appendChild(document.createTextNode(`${localName}: ${localEmail}`));
   userList.appendChild(li);
-  });
+}
 
+function removeUser(localEmail){
+  let rem = document.getElementById(localEmail)
+  userList.removeChild(rem);
+}
+
+  function showUserOnScreen() {
+    Object.keys(localStorage).forEach((key) => {
+      stringifiedDetailsOfPeople = localStorage.getItem(key);
+      deserialized = JSON.parse(stringifiedDetailsOfPeople);
+      newUser(deserialized.Name, deserialized.Email);
+      });
+  }
+
+  showUserOnScreen();
