@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -40,4 +40,90 @@
   
   <script src="dom.js"> </script>
 </body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>JS For Beginners</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <header>
+      <h1>JS For Beginners</h1>
+    </header>
+
+    <section class="container">
+      <form id="my-form">
+        <h1>Add User</h1>
+        <div class="msg"></div>
+        <div>
+          <label for="name">Name:</label>
+          <input type="text" id="name">
+        </div>
+        <div>
+          <label for="email">Email:</label>
+          <input type="text" id="email">
+        </div>
+        <input class="btn" type="submit" value="Submit">
+      </form>
+
+      <ul id="users"></ul>
+
+      <!-- <ul class="items">
+        <li class="item">Item 1</li>
+        <li class="item">Item 2</li>
+        <li class="item">Item 3</li>
+      </ul> -->
+    </section>
+
+    <script>
+      const btn = document.querySelector('.btn');
+
+btn.addEventListener('mouseover', (e) => {
+    document.querySelector('#my-form').style.background = '#CCC';
+    btn.style.background = 'black';
+});
+
+btn.addEventListener('mouseout', (e) => {
+    document.querySelector('#my-form').style.background = 'white';
+    btn.style.background = 'grey';
+});
+
+btn.addEventListener('click', (e) => {
+    btn.style.background = 'red';
+});
+
+const myForm = document.querySelector('#my-form');
+const nameInput = document.querySelector('#name');
+const emailInput = document.querySelector('#email');
+const msg = document.querySelector('.msg');
+const userList = document.querySelector('#users');
+
+myForm.addEventListener('submit' , onSubmit);
+
+function onSubmit(e){
+    e.preventDefault();
+    if (nameInput.value === '' || emailInput.value === ''){
+        msg.classList.add('error')
+        msg.innerHTML = 'Enter All Fields'
+
+        setTimeout( () => msg.remove(), 5000);
+    } else{
+
+      const li = document.createElement('li');
+      li.appendChild(document.createTextNode(`
+      ${nameInput.value} : ${emailInput.value}`));
+
+      userList.appendChild(li);
+
+      nameInput.value = '';
+      emailInput.value = '';
+    }
+}
+    </script>
+  </body>
 </html>
