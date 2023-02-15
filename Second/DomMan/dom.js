@@ -26,64 +26,94 @@
 //     odditems[i].style.backgroundColor = 'green';
 // }
 
-var items = document.querySelector('.list-group');
+// var items = document.querySelector('.list-group');
 
-// parentElement
-items.parentNode.style.backgroundColor = 'orange';
+// // parentElement
+// items.parentNode.style.backgroundColor = 'orange';
 
-// lastelementchild
-items.lastElementChild.style.color = 'red'
+// // lastelementchild
+// items.lastElementChild.style.color = 'red'
 
-// lastchild
-items.lastChild.textContent = 'Considers last linebreak as lastChild';
+// // lastchild
+// items.lastChild.textContent = 'Considers last linebreak as lastChild';
 
-// firstelementchild
-items.firstElementChild.style.color = 'red'
+// // firstelementchild
+// items.firstElementChild.style.color = 'red'
 
-// firstchild
-items.firstChild.textContent = 'Considers first linebreak as firstChild';
+// // firstchild
+// items.firstChild.textContent = 'Considers first linebreak as firstChild';
 
-// nextsibling
-console.log(items.nextSibling)
+// // nextsibling
+// console.log(items.nextSibling)
 
-// nextelementsibling
-console.log(items.nextElementSibling);
+// // nextelementsibling
+// console.log(items.nextElementSibling);
 
-// previoussibling
-console.log(items.previousSibling);
+// // previoussibling
+// console.log(items.previousSibling);
 
-// previouselementsibling
-items.previousElementSibling.textContent = 'Item Names'
+// // previouselementsibling
+// items.previousElementSibling.textContent = 'Item Names'
 
 // createelement
-newDiv = document.createElement('div');
-newDiv.className = 'hello';
-newDiv.id = 'hello';
-
-// setAttribute
-newDiv.setAttribute("title", "Hello All");
-
-// createtextnode
-newText = document.createTextNode("Hello All!");
-
-// appendchild
-newDiv.appendChild(newText);
-
-container = document.querySelector("header .container");
-h1 = document.querySelector("header #header-title");
-
-container.insertBefore(newDiv, h1);
-
-//<li class="list-group-item">Item 1</li>
-
-newli = document.createElement('li');
-newli.className = 'list-group-item';
-newli.appendChild(newText);
-
-ul = document.querySelector("ul");
-li1 = document.querySelector(".list-group-item");
-
-ul.insertBefore(newli, li1);
+// newDiv = document.createElement('div');
+// newDiv.className = 'hello';
+// newDiv.id = 'hello';
+// // setAttribute
+// newDiv.setAttribute("title", "Hello All");
+// // createtextnode
+// newText = document.createTextNode("Hello All!");
+// // appendchild
+// newDiv.appendChild(newText);
+// container = document.querySelector("header .container");
+// h1 = document.querySelector("header #header-title");
+// container.insertBefore(newDiv, h1);
 
 
+// newli = document.createElement('li');
+// newli.className = 'list-group-item';
+// newli.appendChild(newText);
+// ul = document.querySelector("ul");
+// li1 = document.querySelector(".list-group-item");
+// ul.insertBefore(newli, li1);
+
+var form = document.getElementById('addForm');
+form.addEventListener('submit', additem);
+
+var ul = document.querySelector("ul");
+items.addEventListener('click', removeItem);
+
+//Adding item
+function additem(e){
+    e.preventDefault();
+
+    var newItem = document.getElementById('item').value;
+    var li = document.createElement('li');
+    li.className = 'list-group-item';   
+    li.appendChild(document.createTextNode(newItem));
+
+    var delBtn = document.createElement('button');
+    delBtn.className = 'btn btn-danger btn-sm float-right delete';
+    delBtn.appendChild(document.createTextNode('X'));
+    li.appendChild(delBtn);
+
+    var edtBtn = document.createElement('button');
+    edtBtn.className = 'btn btn-info btn-sm float-right edit';
+    edtBtn.appendChild(document.createTextNode('Edit'));
+    li.appendChild(edtBtn);
+
+
+
+    ul.appendChild(li);
+}
+
+//Removing item
+function removeItem(e){
+    if(e.target.classList.contains('delete')){
+        if(confirm('Are you sure?')){
+            var li = e.target.parentElement;
+            ul.removeChild(li);
+        }
+    }
+}
 
