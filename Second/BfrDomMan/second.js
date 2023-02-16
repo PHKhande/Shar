@@ -29,54 +29,38 @@ function showUserOnScreen(obj){
     var newli = document.createElement('li');
     newli.textContent = obj.Name + " " + obj.Email + " " + obj.Phn + " " + obj.Date +  " " + obj.Time
 
-    var newBtn = document.createElement('button');
-    newBtn.id = 'btn';
-    newBtn.className = 'btn btn-danger delete';
-    newBtn.appendChild(document.createTextNode("Delete"));
-    newli.appendChild(newBtn)
+    var editBtn = document.createElement('button');
+    editBtn.id = 'btn';
+    editBtn.className = 'btn btn-info edit';
+    editBtn.appendChild(document.createTextNode(" Edit "));
+    newli.appendChild(editBtn)
     parentElem.appendChild(newli)
 
-    newBtn.onclick = () => {
+    editBtn.onclick = () => {
+        let editObj = localStorage.getItem(obj.Email);
+
+        document.getElementById('name').value = JSON.parse(editObj).Name
+        document.getElementById('email').value = JSON.parse(editObj).Email
+        document.getElementById('phone').value = JSON.parse(editObj).Phn
+        document.getElementById('date').value = JSON.parse(editObj).Date
+        document.getElementById('time').value = JSON.parse(editObj).Time
+
         localStorage.removeItem(obj.Email);
         parentElem.removeChild(newli)
     }
+
+
+    var delBtn = document.createElement('button');
+    delBtn.id = 'btn';
+    delBtn.className = 'btn btn-danger delete';
+    delBtn.appendChild(document.createTextNode(" Delete "));
+    newli.appendChild(delBtn)
+    parentElem.appendChild(newli)
+
+    delBtn.onclick = () => {
+        localStorage.removeItem(obj.Email);
+        parentElem.removeChild(newli)
+    }
+
 }
 }
-
-
-
-
-
-
-
-//     var newBtn = document.createElement('button');
-//     newBtn.id = 'btn';
-//     newBtn.className = 'btn btn-danger delete';
-//     newBtn.appendChild(document.createTextNode("Delete"));
-    
-//     newli.appendChild(document.createTextNode(document.getElementById('name').value  + " "  ));
-//     var email = document.createTextNode(document.getElementById('email').value)
-//     newli.appendChild(email);
-//     newli.appendChild(document.createTextNode(" " + document.getElementById('phone').value + " "));
-//     newli.appendChild(newBtn);
-
-//     newDiv.childNodes[1].appendChild(newli);
-
-
-//     var lidel = document.getElementById('infoli');
-//     lidel.addEventListener('click', deleteItem);
-//     var ul = document.querySelector('#newul');
-    
-//     function deleteItem(e){
-//         if(e.target.classList.contains('delete')){
-//             var li = e.target.parentElement;
-//             console.log(li.childNodes)
-//             newDiv.childNodes[1].removeChild(li);
-//             localStorage.removeItem('li.childNodes');
-
-//         }
-//     }
-    
-// }
-
-
