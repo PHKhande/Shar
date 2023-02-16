@@ -1,15 +1,14 @@
 
 function submitfunc(e){
-    console.log('Name:' + document.getElementById('name').value)
-    console.log('Email:' + document.getElementById('email').value)
-    console.log('Phn:' + document.getElementById('phone').value)
-    console.log('Date:' + document.getElementById('date').value)
-    console.log('Time:' + document.getElementById('time').value)
 
-    sessionStorage.setItem('Name', document.getElementById('name').value)
-    sessionStorage.setItem('Email', document.getElementById('email').value)
-    sessionStorage.setItem('Phn', document.getElementById('phone').value)
-    sessionStorage.setItem('Date', document.getElementById('date').value)
-    sessionStorage.setItem('Time', document.getElementById('time').value)
+    let infoObj = {
+        'Name' : document.getElementById('name').value,
+        'Email': document.getElementById('email').value,
+        'Phn': document.getElementById('phone').value,
+        'Date': document.getElementById('date').value,
+        'Time': document.getElementById('time').value
+    }
 
+    let objStr = JSON.stringify(infoObj)
+    localStorage.setItem("info", objStr);
 }
