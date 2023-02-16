@@ -1,3 +1,4 @@
+// var items = [];
 
 function submitfunc(e){
 
@@ -8,7 +9,7 @@ function submitfunc(e){
         'Date': document.getElementById('date').value,
         'Time': document.getElementById('time').value
     }
-
-    let objStr = JSON.stringify(infoObj)
-    localStorage.setItem("info", objStr);
+    let objStr = JSON.stringify(infoObj);
+    // items.push(objStr)
+    localStorage.setItem(document.getElementById('email').value, objStr);
 }
