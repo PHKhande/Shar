@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <title>Sharpener Expense Tracker</title>
+</head>
+<body>
+    <header class="p-3 mb-2 bg-info text-white border border-danger">
+        <div class="container">
+            <h1> Expense Tracker </h1>
+        </div>
+    </header>
+    <div class="container">
+        <div class="card p-5 border border-info">
+            <h2>Welcome to my expense tracker</h2>
+            <form>
+
+                <label for="expenseAmount">Expense Amount</label>
+                <input id="expenseAmount" type="number" class="form-control" >
+                <br>
+
+                <label for="expenseCategory"> Choose a category </label>
+                <select name="category" id="expenseCategory" >
+                    <option value="Electronics">Electronics</option>
+                    <option value="Electricity & Water">Electricity & Water</option>
+                    <option value="Food">Food</option>
+                    <option value="General">General</option>
+                    <option value="General">Studies</option>
+                </select> 
+                <br>
+                <br>
+
+                <label for="expenseDescription" >Description</label>
+                <input id="expenseDescription" type="text" class="form-control" >
+                <br>
+
+                <button id="btnSubmit" type="submit" class="btn btn-primary" style="background-color: darkorange;">Submit</button>               
+            </form>
+            <br>
+            <br>
+            <div>
+                <ul id = "expenseDetailsUl" class="list-group">
+
+                </ul>
+            </div>
+        </div>
+    </div>
+    <script src="expense.js"></script>
+</body>
+</html>
