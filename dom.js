@@ -77,23 +77,66 @@
 //     });
 // }
 
-const myForm = document.querySelector('#my-form');
-const nameInput = document.querySelector('#name');
-const emailInput = document.querySelector('#email');
-const msg = document.querySelector('.msg');
-const userList = document.querySelector('#users');
+// const myForm = document.querySelector('#my-form');
+// const nameInput = document.querySelector('#name');
+// const emailInput = document.querySelector('#email');
+// const msg = document.querySelector('.msg');
+// const userList = document.querySelector('#users');
 
-myForm.addEventListener('submit' , onSubmit);
+// myForm.addEventListener('submit' , onSubmit);
 
-function onSubmit(e){
-    e.preventDefault();
-    if (nameInput.value === '' || emailInput.value === ''){
-        msg.classList.add('error')
-        msg.innerHTML = 'Enter All Fields'
+// function onSubmit(e){
+//     e.preventDefault();
+//     if (nameInput.value === '' || emailInput.value === ''){
+//         msg.classList.add('error')
+//         msg.innerHTML = 'Enter All Fields'
 
-        setTimeout( () => msg.remove(), 5000);
-    } else{
-        console.log(nameInput.value);
-        console.log(emailInput.value);
-    }
+//         setTimeout( () => msg.remove(), 5000);
+//     } else{
+//         console.log(nameInput.value);
+//         console.log(emailInput.value);
+//     }
+// }
+
+blogs = []
+function updateLastUserActivityTime(){
+    return new Promise( function (res) {
+        setTimeout(function () {
+            const tim = new Date().getTime();
+            res(tim)
+        }, 1000)
+    })
 }
+
+function createPost(post) {
+    return new Promise( (resolve) => {
+        blogs.push(post);
+        resolve(blogs);
+    }) 
+}
+
+
+Promise.all(
+    [
+        createPost("ABC"), updateLastUserActivityTime()
+    ],
+    [
+        createPost("DEF"), updateLastUserActivityTime()
+    ]
+).then(
+    (values) => {
+        console.log(values)
+    }
+)
+
+
+
+
+
+
+
+
+
+
+
+
