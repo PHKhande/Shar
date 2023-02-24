@@ -145,43 +145,41 @@
 // console.log('person4 shows ticket');
 
 
-Promise
-console.log('person1: shows ticket');
-console.log('person2: shows ticket');
+// Promise
+// console.log('person1: shows ticket');
+// console.log('person2: shows ticket');
 
-const promiseWifeBringingTickets = new Promise( (resolve, reject) => {
-    setTimeout( () => {
-        resolve('ticket');
-    }, 3000)
-});
-
-
-const getPopcorn = promiseWifeBringingTickets.then( (t) => {
-    console.log("wife's Hungry");
-    return new Promise((res) => res(`${t} popcorn`) )
-})
-
-const getbutter = getPopcorn.then((m) => {
-    console.log(m)
-    console.log('I need butter')
-    return new Promise( (res) => {res("got butter")})
-})
-
-const getDrinks = getbutter.then((m) => {
-    console.log(m)
-    console.log('I need coldDrinks')
-    return new Promise( (res) => {res("got drinks")})
-})
-
-getDrinks.then( (msg) => {
-    console.log(msg)
-    console.log('Preson3: shows ticket')
-})
-
-console.log('person4: shows ticket');
-console.log('person5: shows ticket');
+// const promiseWifeBringingTickets = new Promise( (resolve, reject) => {
+//     setTimeout( () => {
+//         resolve('ticket');
+//     }, 3000)
+// });
 
 
+// const getPopcorn = promiseWifeBringingTickets.then( (t) => {
+//     console.log("wife's Hungry");
+//     return new Promise((res) => res(`${t} popcorn`) )
+// })
+
+// const getbutter = getPopcorn.then((m) => {
+//     console.log(m)
+//     console.log('I need butter')
+//     return new Promise( (res) => {res("got butter")})
+// })
+
+// const getDrinks = getbutter.then((m) => {
+//     console.log(m)
+//     console.log('I need coldDrinks')
+//     return new Promise( (res) => {res("got drinks")})
+// })
+
+// getDrinks.then( (msg) => {
+//     console.log(msg)
+//     console.log('Preson3: shows ticket')
+// })
+
+// console.log('person4: shows ticket');
+// console.log('person5: shows ticket');
 
 
 
@@ -191,30 +189,48 @@ console.log('person5: shows ticket');
 
 
 
-// blogs = []
-// function updateLastUserActivityTime(){
-//     return new Promise( function (res) {
-//         setTimeout(function () {
-//             const tim = new Date().getTime();
-//             res(tim)
-//         }, 1000)
-//     })
-// }
 
-// function createPost(post) {
-//     return new Promise( (resolve) => {
-//         blogs.push(post);
-//         resolve(blogs);
-//     }) 
-// }
 
-// function deletePost() {
-//     return new Promise( (resolve) => {
-//         blogs.pop();
-//         resolve(blogs);
-//     }) 
-// }
+blogs = []
+let val = function updateLastUserActivityTime(){
+    return new Promise( function (res) {
+        setTimeout(function () {
+            const tim = new Date().getTime();
+            res(tim)
+        }, 1000)
+    })
+}
 
+function createPost(post) {
+    return new Promise( (resolve) => {
+        blogs.push(post);
+        resolve(blogs);
+    }) 
+}
+
+function deletePost() {
+    return new Promise( (resolve) => {
+        blogs.pop();
+        resolve(blogs);
+    }) 
+}
+
+const post = async () => {
+    await createPost("ABC") 
+    let k = await val()
+    console.log(k)
+    console.log(blogs)
+    await createPost("DEF") 
+    k = await val()
+    console.log(k)
+    console.log(blogs)
+    await deletePost() 
+    k = await val()
+    console.log(k)
+    console.log(blogs)
+}
+
+post()
 
 // Promise.all(
 //     [
