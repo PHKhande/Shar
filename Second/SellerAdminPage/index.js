@@ -85,8 +85,8 @@ function showProductdetails(obj){
         var removeCh = document.getElementById('removeChi');
         removeDiv.removeChild(removeCh);
 
-        showTotalValue(z, (-1 * obj.totalValue))
-
+        z = removeCh.textContent - obj.sellingPrice
+        showTotalValue(z,0)
     }
 
     deleteBtn.onclick = () => {
@@ -101,20 +101,21 @@ function showProductdetails(obj){
         var removeCh = document.getElementById('removeChi');
         removeDiv.removeChild(removeCh);
 
-        showTotalValue(z, (-1 * obj.totalValue))
+        z = removeCh.textContent - obj.sellingPrice
+        showTotalValue(z,0)
 
     }
 
 }
 
 
-function showTotalValue(z, totalValue){
+function showTotalValue(smallValue, totalValue){
     
     var parentparaElem = document.getElementById('productdiv');
     var ptotal = document.createElement('p');
     ptotal.className = "d-inline-block"
     ptotal.id = 'removeChi'
-    lastValue = z +  totalValue
+    let lastValue = smallValue +  totalValue
     
     ptotal.textContent = lastValue
     
