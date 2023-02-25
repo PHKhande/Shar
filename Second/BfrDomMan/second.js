@@ -1,3 +1,13 @@
+window.addEventListener("DOMContentLoaded", () => {
+    axios.get("https://crudcrud.com/api/847a4d82e99e424f9552180039d0f53b/appointmentData")
+    .then( (response) => {
+        console.log(response)
+        for (let i = 0; i < response.data.length; i++){
+            showUserOnScreen(response.data[i])
+        }
+    })
+    .catch(err => console.log(err))
+})
 
 
 var subBtn =  document.getElementById("buttonSubmit");
@@ -30,6 +40,7 @@ function submitfunc(e){
         document.body.innerHTML += `<h4> Something went wrong</h4>`
     })
         
+}
 
 function showUserOnScreen(obj){
     var parentElem = document.getElementById('listOfUsers');
@@ -69,5 +80,4 @@ function showUserOnScreen(obj){
         parentElem.removeChild(newli)
     }
 
-}
 }
