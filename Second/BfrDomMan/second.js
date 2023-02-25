@@ -53,15 +53,26 @@ function showUserOnScreen(obj){
     parentElem.appendChild(newli)
 
     editBtn.onclick = () => {
-        let editObj = localStorage.getItem(obj.Email);
 
-        document.getElementById('name').value = JSON.parse(editObj).Name
-        document.getElementById('email').value = JSON.parse(editObj).Email
-        document.getElementById('phone').value = JSON.parse(editObj).Phn
-        document.getElementById('date').value = JSON.parse(editObj).Date
-        document.getElementById('time').value = JSON.parse(editObj).Time
 
-        localStorage.removeItem(obj.Email);
+
+        // let editObj = localStorage.getItem(obj.Email);
+
+        document.getElementById('name').value = obj.Name
+        document.getElementById('email').value = obj.Email
+        document.getElementById('phone').value = obj.Phn
+        document.getElementById('date').value = obj.Date
+        document.getElementById('time').value = obj.Time
+
+        axios.delete(`https://crudcrud.com/api/847a4d82e99e424f9552180039d0f53b/appointmentData/${obj._id}`)
+        .then((response) => {
+            console.log(response)
+            console.log('successfull')
+        })
+        .catch( err => {
+            console.log(err)
+        })
+        // localStorage.removeItem(obj.Email);
         parentElem.removeChild(newli)
     }
 
