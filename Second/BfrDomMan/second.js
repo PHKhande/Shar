@@ -1,7 +1,6 @@
 window.addEventListener("DOMContentLoaded", () => {
     axios.get("https://crudcrud.com/api/847a4d82e99e424f9552180039d0f53b/appointmentData")
     .then( (response) => {
-        console.log(response)
         for (let i = 0; i < response.data.length; i++){
             showUserOnScreen(response.data[i])
         }
@@ -32,7 +31,6 @@ function submitfunc(e){
     
     axios.post("https://crudcrud.com/api/847a4d82e99e424f9552180039d0f53b/appointmentData", obj)
     .then((response) => {
-        console.log(response)
         showUserOnScreen(response.data)
     })
     .catch(err => {
@@ -76,7 +74,15 @@ function showUserOnScreen(obj){
     parentElem.appendChild(newli)
 
     delBtn.onclick = () => {
-        localStorage.removeItem(obj.Email);
+        axios.delete(`https://crudcrud.com/api/847a4d82e99e424f9552180039d0f53b/appointmentData/${obj._id}`)
+        .then((response) => {
+            console.log(response)
+            console.log('successfull')
+        })
+        .catch( err => {
+            console.log(err)
+        })
+        // localStorage.removeItem(obj.Email);
         parentElem.removeChild(newli)
     }
 
