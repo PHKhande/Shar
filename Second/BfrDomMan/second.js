@@ -20,9 +20,16 @@ function submitfunc(e){
         Time
     }
     
-    localStorage.setItem(obj.Email, JSON.stringify(obj));
-    showUserOnScreen(obj);
-
+    axios.post("https://crudcrud.com/api/847a4d82e99e424f9552180039d0f53b/appointmentData", obj)
+    .then((response) => {
+        console.log(response)
+        showUserOnScreen(response.data)
+    })
+    .catch(err => {
+        console.log(err);
+        document.body.innerHTML += `<h4> Something went wrong</h4>`
+    })
+        
 
 function showUserOnScreen(obj){
     var parentElem = document.getElementById('listOfUsers');
