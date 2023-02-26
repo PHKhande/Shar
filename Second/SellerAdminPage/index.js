@@ -1,6 +1,6 @@
 var z = 0
 window.addEventListener('DOMContentLoaded', () => {
-    axios.get("https://crudcrud.com/api/0229ba30fb8a41b0946bbcfa662ad623/productsData")
+    axios.get("https://crudcrud.com/api/43cfeda8ecb64d48b67870aaeb2b4e90/productsData")
     .then( (response) => {
         for (let i = 0; i < response.data.length; i++){
             showProductdetails(response.data[i]);
@@ -25,6 +25,7 @@ function addProduct(e){
     var removeDiv = document.getElementById('productdiv');
     var removeCh = document.getElementById('removeChi');
     removeDiv.removeChild(removeCh)
+    let temp = removeCh.textContent
 
     const sellingPrice = document.getElementById('sellingPrice').value
     const productName = document.getElementById('productName').value
@@ -37,11 +38,11 @@ function addProduct(e){
         totalValue
     }
 
-    axios.post("https://crudcrud.com/api/0229ba30fb8a41b0946bbcfa662ad623/productsData", obj)
+    axios.post("https://crudcrud.com/api/43cfeda8ecb64d48b67870aaeb2b4e90/productsData", obj)
     .then( (response) => {
         console.log(response)
         showProductdetails(response.data);
-        showTotalValue(z, response.data.totalValue);
+        showTotalValue(parseInt(temp), response.data.totalValue);
     })
     .catch( err => {
         console.log(err);
@@ -73,7 +74,7 @@ function showProductdetails(obj){
         document.getElementById('sellingPrice').value = obj.sellingPrice
         document.getElementById('productName').value = obj.productName
 
-        axios.delete(`https://crudcrud.com/api/0229ba30fb8a41b0946bbcfa662ad623/productsData/${obj._id}`)
+        axios.delete(`https://crudcrud.com/api/43cfeda8ecb64d48b67870aaeb2b4e90/productsData/${obj._id}`)
         .then(console.log('Successfully Deleted'))
         .catch( err => {
             console.log(err);
@@ -90,7 +91,7 @@ function showProductdetails(obj){
     }
 
     deleteBtn.onclick = () => {
-        axios.delete(`https://crudcrud.com/api/0229ba30fb8a41b0946bbcfa662ad623/productsData/${obj._id}`)
+        axios.delete(`https://crudcrud.com/api/43cfeda8ecb64d48b67870aaeb2b4e90/productsData/${obj._id}`)
         .then(console.log('Successfully Deleted'))
         .catch( err => {
             console.log(err);
