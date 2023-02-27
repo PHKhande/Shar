@@ -191,46 +191,46 @@
 
 
 
-blogs = []
-let val = function updateLastUserActivityTime(){
-    return new Promise( function (res) {
-        setTimeout(function () {
-            const tim = new Date().getTime();
-            res(tim)
-        }, 1000)
-    })
-}
+// blogs = []
+// let val = function updateLastUserActivityTime(){
+//     return new Promise( function (res) {
+//         setTimeout(function () {
+//             const tim = new Date().getTime();
+//             res(tim)
+//         }, 1000)
+//     })
+// }
 
-function createPost(post) {
-    return new Promise( (resolve) => {
-        blogs.push(post);
-        resolve(blogs);
-    }) 
-}
+// function createPost(post) {
+//     return new Promise( (resolve) => {
+//         blogs.push(post);
+//         resolve(blogs);
+//     }) 
+// }
 
-function deletePost() {
-    return new Promise( (resolve) => {
-        blogs.pop();
-        resolve(blogs);
-    }) 
-}
+// function deletePost() {
+//     return new Promise( (resolve) => {
+//         blogs.pop();
+//         resolve(blogs);
+//     }) 
+// }
 
-const post = async () => {
-    await createPost("ABC") 
-    let k = await val()
-    console.log(k)
-    console.log(blogs)
-    await createPost("DEF") 
-    k = await val()
-    console.log(k)
-    console.log(blogs)
-    await deletePost() 
-    k = await val()
-    console.log(k)
-    console.log(blogs)
-}
+// const post = async () => {
+//     await createPost("ABC") 
+//     let k = await val()
+//     console.log(k)
+//     console.log(blogs)
+//     await createPost("DEF") 
+//     k = await val()
+//     console.log(k)
+//     console.log(blogs)
+//     await deletePost() 
+//     k = await val()
+//     console.log(k)
+//     console.log(blogs)
+// }
 
-post()
+// post()
 
 // Promise.all(
 //     [
@@ -252,7 +252,12 @@ post()
 
 
 
+name = 'Yash Prasad'
+
+age = 25
+
+address = "Prestige Falcon City, Bangalore"
 
 
-
+console.log("personal details = My name is ",name, "age is", age," address is", address)
 
