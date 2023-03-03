@@ -1,25 +1,7 @@
-// console.log("hello world");
+const http = require('http');
 
-// const abc = (a, b) => a * b
-// console.log(abc(5, 6))
+const server = http.createServer( (req, res) => {
+    console.log('Prathviraj Khande')
+});
 
-// //Creating Objects
-// const student = {
-//     name : 'Prathviraj',
-//     age : 24,
-//     class : 'Backend',
-//     studies() {
-//         console.log(`Studies ${this.class}`)
-//     } 
-// }
-// student.studies()
-
-const arr = [ 'apple', 'oranges', ' ', 'mango', ' ', 'lemon']
-console.log(arr.map( fruit => {
-    if(fruit == ' '){
-        return 'empty string'
-    }
-    else return fruit
-}))
-
-
+server.listen(4000, (res) => console.log(res))
