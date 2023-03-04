@@ -1,0 +1,16 @@
+{
+  "name": "nodejscompleteguide",
+  "version": "1.0.0",
+  "description": "SharpenerClasses",
+  "main": "firstApp.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon firstApp.js",
+    "start-server": "node firstApp.js"
+  },
+  "author": "Prathviraj Khande",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^2.0.21"
+  }
+}
