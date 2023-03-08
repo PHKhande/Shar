@@ -6,6 +6,6 @@ const productsController = require('../controllers/products');
 
 const router = express.Router();
 
-router.use('/contactus', productsController.contact )
+router.get('/contactus', productsController.contact )
 
 module.exports = router;

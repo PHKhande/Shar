@@ -6,6 +6,6 @@ const productsController = require('../controllers/products');
 
 const router = express.Router();
 
-router.use('/successfull', productsController.success )
+router.post('/successfull', productsController.success )
 
 module.exports = router;
