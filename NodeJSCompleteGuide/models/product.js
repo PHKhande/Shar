@@ -25,7 +25,7 @@ module.exports = class Product {
     this.description = description;
     this.price = price;
   }
-
+  
   save() {
     getProductsFromFile(products => {
       if (this.id) {
@@ -47,6 +47,8 @@ module.exports = class Product {
     });
   }
 
+
+
   static fetchAll(cb) {
     getProductsFromFile(cb);
   }
@@ -57,4 +59,16 @@ module.exports = class Product {
       cb(product);
     });
   }
+
+  static removeById(id){
+    getProductsFromFile(products => {
+      const existingProductIndex = products.findIndex(p => p.id === id);
+      const updatedProducts = [...products];
+      updatedProducts.splice(existingProductIndex, 1)
+      fs.writeFile(p, JSON.stringify(updatedProducts), err => {
+        console.log(err);
+      });
+    });
+  }
+
 };
