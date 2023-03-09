@@ -3,7 +3,7 @@ const path = require('path');
 const express = require('express');
 const bodyParser = require('body-parser');
 
-const db = require('./helper/database')
+const sequelize = require('./helper/database')
 
 const app = express();
 
@@ -25,29 +25,8 @@ app.use(shopRoutes);
 // app.use(successfulRoute);
 app.use(errorRoute);
 
-app.listen(4000);
+sequelize
+    .sync()
+    .then( res => {app.listen(4000)})
+    .catch( err => { console.log(err)})
 
-// const path = require('path');
-
-// const express = require('express');
-// const bodyParser = require('body-parser');
-
-// const errorRoute = require('./routes/error')
-
-// const app = express();
-
-// app.set('view engine', 'ejs');
-// app.set('views', 'views');
-
-// const adminRoutes = require('./routes/admin');
-// const shopRoutes = require('./routes/shop');
-
-// app.use(bodyParser.urlencoded({ extended: false }));
-// app.use(express.static(path.join(__dirname, 'public')));
-
-// app.use('/admin', adminRoutes);
-// app.use(shopRoutes);
-
-// app.use(errorRoute);
-
-// app.listen(3000);

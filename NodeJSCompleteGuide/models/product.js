@@ -1,34 +1,68 @@
+const Sequelize = require('sequelize')
 
+const sequelize = require('../helper/database');
 
-const db = require('../helper/database')
+const Product = sequelize.define( 'product', {
+  id : {
+    type: Sequelize.INTEGER,
+    autoIncrement: true,
+    allowNull: false,
+    primaryKey: true
+  },
 
-const Cart = require('./cart');
+  title: {
+    type: Sequelize.STRING,
+    allowNull: false
+  },
 
-module.exports = class Product {
-  constructor(id, title, imageUrl, description, price) {
-    this.id = id;
-    this.title = title;
-    this.imageUrl = imageUrl;
-    this.description = description;
-    this.price = price;
+  price: {
+    type: Sequelize.DOUBLE,
+    allowNull: false
+  },
+
+  imageUrl: {
+    type: Sequelize.STRING,
+    allowNull: false
+  },
+
+  description: {
+    type: Sequelize.STRING,
+    allowNull: false
   }
+});
 
-  save() {
-    return db.execute('INSERT INTO products ( title, price, description, imageUrl) VALUES (?, ?, ?, ?)',
-     [this.title, this.price, this.description, this.imageUrl]
-    );
-  }
+module.exports = Product;
 
-  static deleteById(id) {
-    console.log(id)
-    return db.execute('DELETE FROM products WHERE products.id = ?', [id])
-  }
+//https://cdn.pixabay.com/photo/2015/10/30/20/13/sunrise-1014712__340.jpg
+// const db = require('../helper/database')
 
-  static fetchAll() {
-    return db.execute('SELECT * FROM products');
-  }
+// const Cart = require('./cart');
 
-  static findById(id) {
-    return db.execute('SELECT * FROM products WHERE products.id = ?', [id])
-  }
-};
+// module.exports = class Product {
+//   constructor(id, title, imageUrl, description, price) {
+//     this.id = id;
+//     this.title = title;
+//     this.imageUrl = imageUrl;
+//     this.description = description;
+//     this.price = price;
+//   }
+
+//   save() {
+//     return db.execute('INSERT INTO products ( title, price, description, imageUrl) VALUES (?, ?, ?, ?)',
+//      [this.title, this.price, this.description, this.imageUrl]
+//     );
+//   }
+
+//   static deleteById(id) {
+//     console.log(id)
+//     return db.execute('DELETE FROM products WHERE products.id = ?', [id])
+//   }
+
+//   static fetchAll() {
+//     return db.execute('SELECT * FROM products');
+//   }
+
+//   static findById(id) {
+//     return db.execute('SELECT * FROM products WHERE products.id = ?', [id])
+//   }
+// };
