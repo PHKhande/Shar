@@ -3,6 +3,8 @@ const path = require('path');
 const express = require('express');
 const bodyParser = require('body-parser');
 
+const db = require('./helper/databse')
+
 const app = express();
 
 app.set('view engine', 'ejs');
@@ -13,6 +15,8 @@ const shopRoutes = require('./routes/shop');
 // const contactRoute = require('./routes/contactus');
 // const successfulRoute = require('./routes/success');
 const errorRoute = require('./routes/error')
+
+db.execute('SELECT * FROM products');
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
