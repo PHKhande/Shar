@@ -1,0 +1,34 @@
+.card {
+    width: 50%;
+    background-color: rgb(244, 247, 247);
+    border:1px solid #e08b0b;
+    padding: 10px 10px 10px 10px;
+    margin: 0 auto;
+    float: none;
+    margin-bottom: 10px;
+}
+
+.container{
+    align-content: center;
+}
+
+body {
+  margin-top: 40px;
+}
+
+
+body::before {
+    color: red;
+    font-size: 2rem;
+    font-weight: bold;
+    position: fixed;
+    top: 0;
+    right: 0;
+  }
+  
+  .box {
+    background-color: lightblue;
+    border: 1px solid blue;
+    min-height: 50px;
+    font-size: 2rem;
+  }
