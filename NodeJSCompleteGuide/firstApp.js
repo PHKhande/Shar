@@ -6,8 +6,6 @@ const cors = require('cors');
 
 const sequelize = require('./helper/database');
 
-const User = require('./models/user')
-
 const app = express();
 
 app.use(cors());
@@ -19,6 +17,7 @@ const adminRoutes = require('./routes/admin');
 const shopRoutes = require('./routes/shop');
 const userRoutes = require('./routes/user');
 const errorRoute = require('./routes/error');
+const expenseRoutes = require('./routes/expenseRoute');
 
 // app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json({ extended: false }));
@@ -29,6 +28,8 @@ app.use(shopRoutes);
 app.use(errorRoute);
 
 app.use('/', userRoutes);
+
+app.use('/', expenseRoutes);
 
 sequelize
     .sync()

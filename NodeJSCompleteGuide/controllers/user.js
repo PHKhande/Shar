@@ -3,9 +3,9 @@ const User = require('../models/user');
 
 exports.postUserInfo = async (req, res, next) => {
     try{
-        // if(!req.body.name | !req.body.number | !req.body.email ){
-        //     throw new Error('All fields are mandatory')
-        // }
+        if(!req.body.name | !req.body.number | !req.body.email ){
+            throw new Error('All fields are mandatory')
+        }
         
         const name = req.body.Name;
         const phnnumber = req.body.Phn;
