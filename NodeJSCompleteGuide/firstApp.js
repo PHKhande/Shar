@@ -7,6 +7,8 @@ const cors = require('cors');
 const sequelize = require('./helper/database');
 const Product = require('./models/product');
 const User = require('./models/user');
+const Cart = require('./models/cart');
+const CartItem = require('./models/cart-item');
 
 const app = express();
 
@@ -40,6 +42,10 @@ app.use(errorRoute);
 
 Product.belongsTo(User, { constraints: true, onDelete:'CASCADE' });
 User.hasMany(Product);
+User.hasOne(Cart);
+Cart.belongsTo(User);
+Cart.belongsToMany(Product, { through: CartItem });
+Product.belongsToMany(Cart, { through: CartItem });
 // app.use('/', userRoutes);
 
 // app.use('/', expenseRoutes);
@@ -56,6 +62,10 @@ sequelize
         } else{
             return user; //Promise.resolve(user) In above line we are returning promise and we need to return promise from here also, but when returning from .then, it turns all objects into promises so its okay
         }
+    })
+    .then(user => {
+        // console.log(user);
+        return user.createCart();
     })
     .then( user => {
         // console.log(user);
